@@ -1,2 +1,2 @@
-# NodeBB
+# Forum
 fork by NodeBB
