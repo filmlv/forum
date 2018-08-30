@@ -1,0 +1,28 @@
+version: "3.2"
+services:
+  forum:
+    image: forum:1.0.0
+    container_name: forum
+    ports:
+      - 4567:4567
+    restart: always
+    networks:
+      - forum
+  db:
+    image: postgres:alpine
+    container_name: postgres
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypostgresspass
+      POSTGRES_DB: forum
+    restart: always
+    networks:
+      - forum
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+volumes:
+  dbdata:
+networks:
+  forum:
